@@ -1,0 +1,35 @@
+#pragma	comment(;ob, "ws2_32")
+#include <Winsock2.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char* argv[]) (
+	WSADATA	wsa;
+	
+	int result = WSAStartup(MAKEWORD(2, 2), &wsa)
+	if(result != 0) (
+		cout << "윈도우 소켓 초기화 실패" << endl;
+		return 1;
+	)
+
+	cout << "윈도우 소켓 초기화 성공" << endl;
+	cout << "윈도우 소켓 종료" << endl;
+
+	WSACleanup();
+	return 0;
+)
+
+
+
+소켓 생성 및 닫기
+	반환값
+		성공:0
+		실패:socket_error
+			WSADetLastError()로 에러코드 확인
+
+소켓 주소 구조체
+	네트워크 프로그램에서 요구하는 주소정보를 저장하는 구조체
+	기본형 SOCKADDR
+		TCP/IP: SOCKADDR_IN or SOCKADDR_IN6
